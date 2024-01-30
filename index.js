@@ -8,14 +8,23 @@ const app = express();
 
 
 app.use(express.static("public"));
-app.use(express.urlencoded({extended:1}));
+app.use(express.urlencoded({ extended: 1 }));
 
 app.get("/generate", async (req, res) => {
   const url = req.query.generatee;
   console.log(url);
-  var qr_svg = qr.image(url);
-  qr_svg.pipe(fs.createWriteStream("public/myqr.png"));
-  res.end();
+  var qr_svg = qr.imageSync(url , {'type':'png'});
+
+
+  res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Content-Disposition', 'inline; filename=myqr.png');
+
+  // Send QR code buffer in the response
+  res.send(qr_svg);
+
+
+  // qr_svg.pipe(fs.createWriteStream("public/myqr.png"));
+  // res.end();
 })
 
 app.listen(port, () => {
