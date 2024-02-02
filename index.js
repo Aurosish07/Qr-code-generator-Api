@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: 1 }));
 app.get("/generate", async (req, res) => {
   const url = req.query.generatee;
   console.log(url);
-  var qr_svg = qr.imageSync(url , {'type':'png'});
+  var qr_svg = qr.imageSync(url, { 'type': 'png' });
 
 
   res.setHeader('Content-Type', 'image/png');
@@ -23,8 +23,7 @@ app.get("/generate", async (req, res) => {
   res.send(qr_svg);
 
 
-  // qr_svg.pipe(fs.createWriteStream("public/myqr.png"));
-  // res.end();
+
 })
 
 app.listen(port, () => {
