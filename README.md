@@ -3,7 +3,7 @@ Qr code api for front-end devs
 
 ## Installation
 
-:- you can just request to this api endpoint by : -  https://qr-code-generator-api-seven.vercel.app/generate?generatee=${url}
+:- you can use this api without js only using html : -  https://qr-code-generator-api-seven.vercel.app/generate?generatee=${url}
 
 :- Add the url to the query parameter with , key :- generatee
                                              value :- yourUrl
